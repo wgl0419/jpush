@@ -183,3 +183,33 @@ Step 3. Use it
                     <meta-data
                         android:name="JPUSH_APPKEY"
                         android:value="${JPUSH_APPKEY}" /> <!--  </>值来自开发者平台取得的AppKey-->
+
+
+       3.your application
+
+            @Override
+            public void onCreate() {
+                    JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
+                    JPushInterface.init(this);     		// 初始化 JPush
+            }
+
+        4.设置别名
+
+            private void setAlias(Context context, String alias) {
+                // 调用 JPush 接口来设置别名。
+                JPushInterface.setAliasAndTags(context,
+                        alias, null, new TagAliasCallback() {
+                            @Override
+                            public void gotResult(int code, String s, Set<String> set) {
+                                switch (code) {
+                                    case 0:
+                                        // 建议这里往 SharePreference 里写一个成功设置的状态。成功设置一次后，以后不必再次设置了。
+        //                  MyApplication.getSp().edit().putBoolean("setAlias",true).apply();
+                                        break;
+                                    case 6002:
+                                        break;
+                                    default:
+                                }
+                            }
+                        });
+            }
