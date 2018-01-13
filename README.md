@@ -19,7 +19,7 @@ Step 2. Add the dependency
 
 Step 3. Use it
 
-        1.Add it in your app build.gradle
+1.Add it in your app build.gradle
 
             android {
                 compileSdkVersion 27
@@ -41,7 +41,7 @@ Step 3. Use it
 
               }
 
-        2.配置AndroidManifest.xml
+2.配置AndroidManifest.xml
 
             <!-- 极光推送Required  一些系统要求的权限，如访问网络等-->
             <permission
@@ -67,7 +67,6 @@ Step 3. Use it
             <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
             <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
             <uses-permission android:name="android.permission.GET_TASKS" />
-
 
             在application节点下配置如下
 
@@ -184,8 +183,7 @@ Step 3. Use it
                         android:name="JPUSH_APPKEY"
                         android:value="${JPUSH_APPKEY}" /> <!--  </>值来自开发者平台取得的AppKey-->
 
-
-       3.your application
+3.your application
 
             @Override
             public void onCreate() {
@@ -193,7 +191,7 @@ Step 3. Use it
                     JPushInterface.init(this);     		// 初始化 JPush
             }
 
-        4.设置别名
+4.设置别名
 
             private void setAlias(Context context, String alias) {
                 // 调用 JPush 接口来设置别名。
