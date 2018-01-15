@@ -35,7 +35,6 @@ Step 3. Use it
                             JPUSH_PKGNAME: applicationId,//applicationId
                             JPUSH_APPKEY : "d1f84c6d9ce2818bd549a550", //JPush上注册的包名对应的appkey.
                             JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
-                            UMENG_APPKEY:"593e444c717c195c86001b8b"//友盟
                     ]
                 }
 
@@ -183,44 +182,15 @@ Step 3. Use it
                         android:name="JPUSH_APPKEY"
                         android:value="${JPUSH_APPKEY}" /> <!--  </>值来自开发者平台取得的AppKey-->
 
-3.your application
 
-            @Override
-            public void onCreate() {
-                    JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
-                    JPushInterface.init(this);     		// 初始化 JPush
-            }
-
-4.设置别名
-
-            private void setAlias(Context context, String alias) {
-                // 调用 JPush 接口来设置别名。
-                JPushInterface.setAliasAndTags(context,
-                        alias, null, new TagAliasCallback() {
-                            @Override
-                            public void gotResult(int code, String s, Set<String> set) {
-                                switch (code) {
-                                    case 0:
-                                        // 建议这里往 SharePreference 里写一个成功设置的状态。成功设置一次后，以后不必再次设置了。
-        //                  MyApplication.getSp().edit().putBoolean("setAlias",true).apply();
-                                        break;
-                                    case 6002:
-                                        break;
-                                    default:
-                                }
-                            }
-                        });
-            }
-
-5.自定义Receiver处理推送下来的消息
-
-            package com.jpush.sdk;
+3.自定义Receiver处理推送下来的消息
 
             import android.content.BroadcastReceiver;
             import android.content.Context;
             import android.content.Intent;
             import android.os.Bundle;
             import android.text.TextUtils;
+            import com.jpush.sdk.Logger;
 
             import org.json.JSONException;
             import org.json.JSONObject;
@@ -341,6 +311,37 @@ Step 3. Use it
             //		}
             //	}
             }
+
+4.your application
+
+            @Override
+            public void onCreate() {
+                    JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
+                    JPushInterface.init(this);     		// 初始化 JPush
+            }
+
+
+5.设置别名
+
+            private void setAlias(Context context, String alias) {
+                // 调用 JPush 接口来设置别名。
+                JPushInterface.setAliasAndTags(context,
+                        alias, null, new TagAliasCallback() {
+                            @Override
+                            public void gotResult(int code, String s, Set<String> set) {
+                                switch (code) {
+                                    case 0:
+                                        // 建议这里往 SharePreference 里写一个成功设置的状态。成功设置一次后，以后不必再次设置了。
+        //                  MyApplication.getSp().edit().putBoolean("setAlias",true).apply();
+                                        break;
+                                    case 6002:
+                                        break;
+                                    default:
+                                }
+                            }
+                        });
+            }
+
 
 6.设置自定义通知栏
 
