@@ -1,25 +1,27 @@
 # jpush-library
 
-Step 1. Add the JitPack repository to your build file
+## Usage
+
+### Step 1. Add the JitPack repository to your build file
 
 Add it in your root build.gradle at the end of repositories:
 
-    	allprojects {
-    		repositories {
-    			...
-    			maven { url 'https://jitpack.io' }
-    		}
-    	}
-
-Step 2. Add the dependency
-
-        dependencies {
-                compile 'com.github.wyba:jpush-library:V3.1.2'
+    allprojects {
+        repositories {
+            ...
+            maven { url 'https://jitpack.io' }
         }
+    }
 
-Step 3. Use it
+### Step 2. Add the dependency
 
-1.Add it in your app build.gradle
+    dependencies {
+            compile 'com.github.wyba:jpush-library:V3.1.2'
+    }
+
+### Step 3. Use it
+
+#### 1.Add it in your app build.gradle
 
             android {
                 compileSdkVersion 27
@@ -40,7 +42,7 @@ Step 3. Use it
 
               }
 
-2.配置AndroidManifest.xml
+#### 2.配置AndroidManifest.xml
 
             <!-- 极光推送Required  一些系统要求的权限，如访问网络等-->
             <permission
@@ -183,7 +185,7 @@ Step 3. Use it
                         android:value="${JPUSH_APPKEY}" /> <!--  </>值来自开发者平台取得的AppKey-->
 
 
-3.自定义Receiver处理推送下来的消息
+#### 3.自定义Receiver处理推送下来的消息
 
             import android.content.BroadcastReceiver;
             import android.content.Context;
@@ -312,7 +314,7 @@ Step 3. Use it
             //	}
             }
 
-4.your application
+#### 4.your application
 
             @Override
             public void onCreate() {
@@ -321,7 +323,7 @@ Step 3. Use it
             }
 
 
-5.设置别名
+#### 5.设置别名
 
             private void setAlias(Context context, String alias) {
                 // 调用 JPush 接口来设置别名。
@@ -343,7 +345,7 @@ Step 3. Use it
             }
 
 
-6.设置自定义通知栏
+#### 6.设置自定义通知栏
 
         // 设置自定义通知栏
         public static void setJpushNotification() {
@@ -361,7 +363,7 @@ Step 3. Use it
             JPushInterface.setPushNotificationBuilder(1, builder);
         }
 
-7.常用API
+#### 7.常用API
 
             API - stopPush
 
