@@ -1,4 +1,4 @@
-package com.jpush.sdk;
+package com.wyb.jpush;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
