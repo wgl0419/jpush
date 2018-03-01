@@ -1,4 +1,4 @@
-# jpush-library
+# jpush
 
 ## Usage
 
@@ -16,7 +16,7 @@ Add it in your root build.gradle at the end of repositories:
 ### Step 2. Add the dependency
 
     dependencies {
-            compile 'com.github.wyba:jpush-library:V3.1.2'
+            compile 'com.github.wyba:jpush:V4.0.0'
     }
 
 ### Step 3. Use it
